@@ -1,6 +1,6 @@
 class HashTable:
     def __init__(self):
-        self.table = [[] for _ in range(10]
+        self.table = [[] for _ in range(10])
 
     def put(self, package):
         package_hash = package.package_id % 10
@@ -14,4 +14,5 @@ class HashTable:
                 return package
         return None
 
-
+    def __str__(self):
+        return str(self.table)
