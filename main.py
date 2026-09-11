@@ -49,19 +49,21 @@ dict_counter = 1
 #read in the distance CSV file, and parse the data
 with open("WGUPS Distance Table.csv",
           encoding="utf-8-sig") as distance_file:
+    previous_line = []
     for line in distance_file:
         distance_input = line.strip().split(",")
 
         #start reading at HUB row of file
         if len(distance_input) > 2 and "HUB" in distance_input[2]:
+            hub_address = previous_line[0].strip('"')    #capture hub address
+            distance_dict[hub_address] = 0               #initialize dictionary with hub address & key 0
             start_line = True
 
-        #row counter for tracking
         if start_line:
             #print(distance_input) #to test distance_input data load
             distance_row += 1
 
-            #append data to distance_data list only if distance element
+            #append data to distance_data list only if distance data element (floatable)
             if distance_row % 3 == 1:
                 distance_row_data = []
 
@@ -85,6 +87,8 @@ with open("WGUPS Distance Table.csv",
                 distance_dict[address_data] = dict_counter #adds address to dictionary and assigns incrementing dictionary key
                 dict_counter += 1 #increments for key assignment
 
+        previous_line = distance_input
+
 #test dictionary loading
-#print(distance_dict)
+print(distance_dict)
 
