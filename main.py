@@ -35,7 +35,7 @@ with open("WGUPS Package File.csv",
         #save the package data to the hash table
         package_table.put(package)
 
-#to test
+#to test Package object loading / creation
 #print(package_table)
 #print(package_table.lookup(14))
 
@@ -43,6 +43,8 @@ with open("WGUPS Package File.csv",
 distance_data = []
 start_line = False
 distance_row = 0
+distance_dict = {}
+dict_counter = 1
 
 #read in the distance CSV file, and parse the data
 with open("WGUPS Distance Table.csv",
@@ -56,6 +58,7 @@ with open("WGUPS Distance Table.csv",
 
         #row counter for tracking
         if start_line:
+            #print(distance_input) #to test distance_input data load
             distance_row += 1
 
             #append data to distance_data list only if distance element
@@ -73,5 +76,15 @@ with open("WGUPS Distance Table.csv",
                     distance_row_data.append(float(distance))
                 distance_data.append(distance_row_data)
 
+#to test distance list load
+#print(distance_data)
 
-print(distance_data)
+            #create dictionary for mapping between addresses and distance list & extract address portion of distance info only
+            if distance_row % 3 == 0:
+                address_data = distance_input[0].strip('"') #removes trailing double quotation mark from the file
+                distance_dict[address_data] = dict_counter #adds address to dictionary and assigns incrementing dictionary key
+                dict_counter += 1 #increments for key assignment
+
+#test dictionary loading
+#print(distance_dict)
+
