@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf1c41c5-b2a3-49eb-a6dd-32ac9a722480" name="Changes" comment="Created main.py, and loop to parse CSV file data into hash table">
+    <list default="true" id="cf1c41c5-b2a3-49eb-a6dd-32ac9a722480" name="Changes" comment="Corrected validation issues with parsing, and tested Package printing / creation">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,61 +37,61 @@
 }]]></component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.01486497715029" />
-      <entry key="MS500" value="1.625013802896611" />
-      <entry key="S2" value="2.5809641006023236" />
-      <entry key="S5" value="3.228343735374666" />
-      <entry key="S10" value="4.124260475617653" />
-      <entry key="S30" value="7.589276840168128" />
-      <entry key="S60" value="10.017541023273306" />
-      <entry key="M2" value="11.909982682575436" />
-      <entry key="M5" value="17.465563097359382" />
-      <entry key="M10" value="34.24441949696573" />
-      <entry key="M15" value="53.21139735879001" />
-      <entry key="M30" value="96.18384985268096" />
-      <entry key="H1" value="136.94599856226253" />
-      <entry key="H2" value="166.11220623869787" />
-      <entry key="H4" value="191.656842452569" />
-      <entry key="D1" value="299.0699292011889" />
-      <entry key="W1" value="353.6205962786238" />
+      <entry key="MS100" value="1.0000018572462166" />
+      <entry key="MS500" value="1.1068068243294615" />
+      <entry key="S2" value="3.1006893220894947" />
+      <entry key="S5" value="6.53860136670295" />
+      <entry key="S10" value="10.630123048490399" />
+      <entry key="S30" value="18.616797815395177" />
+      <entry key="S60" value="22.58917660690589" />
+      <entry key="M2" value="25.76909331480969" />
+      <entry key="M5" value="32.678700351349576" />
+      <entry key="M10" value="44.679760642289466" />
+      <entry key="M15" value="56.05865323520971" />
+      <entry key="M30" value="90.08495569404856" />
+      <entry key="H1" value="151.00601301314504" />
+      <entry key="H2" value="221.9571255617893" />
+      <entry key="H4" value="284.97043230021836" />
+      <entry key="D1" value="437.9681486702564" />
+      <entry key="W1" value="505.92892703194354" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.5942822806125757E-176" />
-      <entry key="S5" value="4.883719544081158E-71" />
-      <entry key="S10" value="7.85475855372152E-36" />
-      <entry key="S30" value="2.8817214897787053E-12" />
-      <entry key="S60" value="2.3683369799371867E-6" />
-      <entry key="M2" value="0.0021699360834254488" />
-      <entry key="M5" value="0.13886148894873437" />
-      <entry key="M10" value="0.7244519028181602" />
-      <entry key="M15" value="1.4469336195640665" />
-      <entry key="M30" value="3.220210677389647" />
-      <entry key="H1" value="5.010050372053069" />
-      <entry key="H2" value="6.320845802296786" />
-      <entry key="H4" value="7.269260423787323" />
-      <entry key="D1" value="9.698983740094592" />
-      <entry key="W1" value="10.778552692890305" />
+      <entry key="MS500" value="8.834103689817104E-124" />
+      <entry key="S2" value="1.7240133445544528E-31" />
+      <entry key="S5" value="4.950125950812009E-13" />
+      <entry key="S10" value="7.035713362403846E-7" />
+      <entry key="S30" value="0.008921873047036458" />
+      <entry key="S60" value="0.09957727294752852" />
+      <entry key="M2" value="0.3798043951863426" />
+      <entry key="M5" value="1.0190289671668882" />
+      <entry key="M10" value="1.736192495418479" />
+      <entry key="M15" value="2.3060519600672773" />
+      <entry key="M30" value="3.7223252023088373" />
+      <entry key="H1" value="6.033842458082166" />
+      <entry key="H2" value="8.730920827014739" />
+      <entry key="H4" value="11.037550631184192" />
+      <entry key="D1" value="15.181528240337597" />
+      <entry key="W1" value="16.696396703989343" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9802949503829484" />
-      <entry key="MS500" value="1.613789012638223" />
-      <entry key="S2" value="2.5764679981849863" />
-      <entry key="S5" value="3.219323633808124" />
-      <entry key="S10" value="4.083269140077909" />
-      <entry key="S30" value="7.508752827402597" />
-      <entry key="S60" value="9.953224266707302" />
-      <entry key="M2" value="11.870529887892836" />
-      <entry key="M5" value="17.57681755746864" />
-      <entry key="M10" value="34.94242889511778" />
-      <entry key="M15" value="54.63279268965128" />
-      <entry key="M30" value="99.3832057727418" />
-      <entry key="H1" value="141.94199714098542" />
-      <entry key="H2" value="172.42475200109877" />
-      <entry key="H4" value="198.9213404644141" />
-      <entry key="D1" value="308.7676165099807" />
-      <entry key="W1" value="364.3989261963277" />
+      <entry key="MS100" value="0.9592659009286263" />
+      <entry key="MS500" value="1.0976884430159741" />
+      <entry key="S2" value="3.088953566726891" />
+      <entry key="S5" value="6.513063297259857" />
+      <entry key="S10" value="10.60477106010657" />
+      <entry key="S30" value="18.61090641491845" />
+      <entry key="S60" value="22.674082434817954" />
+      <entry key="M2" value="26.12443385411348" />
+      <entry key="M5" value="33.66166567712145" />
+      <entry key="M10" value="46.381933243058754" />
+      <entry key="M15" value="58.33460992089173" />
+      <entry key="M30" value="93.78392891644756" />
+      <entry key="H1" value="157.022014323414" />
+      <entry key="H2" value="230.67575341876173" />
+      <entry key="H4" value="296.0003374689756" />
+      <entry key="D1" value="453.1477244810148" />
+      <entry key="W1" value="522.624999350865" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -283,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789140008541</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Corrected validation issues with parsing, and tested Package printing / creation">
+      <option name="closed" value="true" />
+      <created>1789142067388</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1789142067388</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +302,7 @@
     <MESSAGE value="Initial project set up, creation of package and hash_table classes" />
     <MESSAGE value="Updated / correct package class to include appropriate attributes" />
     <MESSAGE value="Created main.py, and loop to parse CSV file data into hash table" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created main.py, and loop to parse CSV file data into hash table" />
+    <MESSAGE value="Corrected validation issues with parsing, and tested Package printing / creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrected validation issues with parsing, and tested Package printing / creation" />
   </component>
 </project>

@@ -36,4 +36,42 @@ with open("WGUPS Package File.csv",
         package_table.put(package)
 
 #to test
-print(package_table)
+#print(package_table)
+#print(package_table.lookup(14))
+
+#create empty distance list
+distance_data = []
+start_line = False
+distance_row = 0
+
+#read in the distance CSV file, and parse the data
+with open("WGUPS Distance Table.csv",
+          encoding="utf-8-sig") as distance_file:
+    for line in distance_file:
+        distance_input = line.strip().split(",")
+
+        #start reading at HUB row of file
+        if len(distance_input) > 2 and "HUB" in distance_input[2]:
+            start_line = True
+
+        #row counter for tracking
+        if start_line:
+            distance_row += 1
+
+            #append data to distance_data list only if distance element
+            if distance_row % 3 == 1:
+                distance_row_data = []
+
+                #beginning with the second element to skip the zip
+                for distance in distance_input[1:]:
+                    #skips all non-float values, and empty strings
+                    try:
+                        (float(distance))
+                    except ValueError:
+                        continue
+
+                    distance_row_data.append(float(distance))
+                distance_data.append(distance_row_data)
+
+
+print(distance_data)
