@@ -8,14 +8,32 @@ from hash_table import HashTable
 package_table = HashTable()
 
 #open the CSV file "WGUPS Package File.csv"
-with open("WGUPS Package File.csv") as package_file:
+with open("WGUPS Package File.csv",
+          encoding="utf-8-sig") as package_file:
     for line in package_file:
-        if "Package ID" in line:  #start at first header row above data to be parsed
-            continue
         package_data = line.strip().split(",") #remove whitespace from the ends & split at the commas
 
-        #create Package object with deliminated package data and starter values for load time, delivery time, and status
-        package = Package(package_data[0], package_data[1], package_data[2], package_data[3], package_data[4],package_data[5],package_data[6],None,None,"at the hub")
+        #validate line being parsed actually includes package data (beings with package_id integer)
+        try:
+            package_id = int(package_data[0])
+        except ValueError:
+            continue
+
+        #create Package object with delimited package data and starter values for load time, delivery time, and status
+        package = Package(
+            int(package_data[0]),
+            package_data[1],
+            package_data[2],
+            package_data[3],
+            package_data[4],
+            package_data[5],
+            package_data[6],
+            None,
+            None,
+            "at the hub")
 
         #save the package data to the hash table
         package_table.put(package)
+
+#to test
+print(package_table)
