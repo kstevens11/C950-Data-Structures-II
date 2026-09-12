@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf1c41c5-b2a3-49eb-a6dd-32ac9a722480" name="Changes" comment="created get_distance function to retrieve distances, and loaded truck lists with Package objects per package file constraints (notes)">
+    <list default="true" id="cf1c41c5-b2a3-49eb-a6dd-32ac9a722480" name="Changes" comment="working on nearest neighbor algorithm implementation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -37,61 +37,61 @@
 }]]></component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.118542885220165" />
-      <entry key="MS500" value="2.337141028216349" />
-      <entry key="S2" value="4.794509899477157" />
-      <entry key="S5" value="7.398844451591824" />
-      <entry key="S10" value="9.53565735068489" />
-      <entry key="S30" value="14.051360766955764" />
-      <entry key="S60" value="18.01172284198903" />
-      <entry key="M2" value="24.007288887553848" />
-      <entry key="M5" value="37.91067580989502" />
-      <entry key="M10" value="55.67895943549094" />
-      <entry key="M15" value="72.63655402244633" />
-      <entry key="M30" value="114.22804213485124" />
-      <entry key="H1" value="159.7099188517939" />
-      <entry key="H2" value="195.57771623689766" />
-      <entry key="H4" value="228.30535504913203" />
-      <entry key="D1" value="563.1410338382377" />
-      <entry key="W1" value="862.5667565965477" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000000010465" />
+      <entry key="S5" value="1.0000291497089153" />
+      <entry key="S10" value="1.013987682577358" />
+      <entry key="S30" value="2.368531678664352" />
+      <entry key="S60" value="6.568550669157333" />
+      <entry key="M2" value="13.901218074003085" />
+      <entry key="M5" value="26.413236225351103" />
+      <entry key="M10" value="42.78729985150317" />
+      <entry key="M15" value="60.37433270249845" />
+      <entry key="M30" value="110.475482855646" />
+      <entry key="H1" value="177.01922712901572" />
+      <entry key="H2" value="237.47359815404764" />
+      <entry key="H4" value="288.35203897544426" />
+      <entry key="D1" value="639.6355691268486" />
+      <entry key="W1" value="947.3055337439116" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.01803087770715E-309" />
-      <entry key="MS500" value="1.5905678144372285E-62" />
-      <entry key="S2" value="3.5513056109886057E-16" />
-      <entry key="S5" value="6.609296258558741E-7" />
-      <entry key="S10" value="8.129983981182317E-4" />
-      <entry key="S30" value="0.09616374301976732" />
-      <entry key="S60" value="0.361772250944773" />
-      <entry key="M2" value="0.861832407609277" />
-      <entry key="M5" value="1.9381693627461463" />
-      <entry key="M10" value="3.185441042416935" />
-      <entry key="M15" value="4.188224667883503" />
-      <entry key="M30" value="6.0884551204091695" />
-      <entry key="H1" value="7.680569159771171" />
-      <entry key="H2" value="8.7348144209184" />
-      <entry key="H4" value="9.62148270133706" />
-      <entry key="D1" value="18.978857891484797" />
-      <entry key="W1" value="27.05531489756523" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="5.259076521575843E-100" />
+      <entry key="S2" value="1.5143538726251463E-25" />
+      <entry key="S5" value="1.1805678417377005E-10" />
+      <entry key="S10" value="1.0865452920794182E-5" />
+      <entry key="S30" value="0.022538101864803813" />
+      <entry key="S60" value="0.16856036759549034" />
+      <entry key="M2" value="0.5280157211828527" />
+      <entry key="M5" value="1.2463128119117568" />
+      <entry key="M10" value="2.1639187350480733" />
+      <entry key="M15" value="3.1089281654411596" />
+      <entry key="M30" value="5.596263051609621" />
+      <entry key="H1" value="8.464989716321892" />
+      <entry key="H2" value="10.770394913623651" />
+      <entry key="H4" value="12.502234363190864" />
+      <entry key="D1" value="22.62180487901666" />
+      <entry key="W1" value="30.9837226279729" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.0302143407679427" />
-      <entry key="MS500" value="2.2983676663413646" />
-      <entry key="S2" value="4.776021498436805" />
-      <entry key="S5" value="7.380739380684541" />
-      <entry key="S10" value="9.490830426937459" />
-      <entry key="S30" value="14.070258774856729" />
-      <entry key="S60" value="18.308905936031845" />
-      <entry key="M2" value="24.820931189874557" />
-      <entry key="M5" value="39.81358856059767" />
-      <entry key="M10" value="58.83215045866215" />
-      <entry key="M15" value="76.79400513228687" />
-      <entry key="M30" value="120.29122432603985" />
-      <entry key="H1" value="167.3730913396272" />
-      <entry key="H2" value="204.3020739303441" />
-      <entry key="H4" value="237.9208478537027" />
-      <entry key="D1" value="582.1175900350568" />
-      <entry key="W1" value="889.6215691294443" />
+      <entry key="MS100" value="0.8585654364377537" />
+      <entry key="MS500" value="0.9699619103417348" />
+      <entry key="S2" value="0.9924043746861436" />
+      <entry key="S5" value="0.9969773945408154" />
+      <entry key="S10" value="1.0114751210200348" />
+      <entry key="S30" value="2.370840161792354" />
+      <entry key="S60" value="6.70208390924074" />
+      <entry key="M2" value="14.388549230458139" />
+      <entry key="M5" value="27.624015522646346" />
+      <entry key="M10" value="44.92236064237324" />
+      <entry key="M15" value="63.456757971970006" />
+      <entry key="M30" value="116.04813210780027" />
+      <entry key="H1" value="185.465653683656" />
+      <entry key="H2" value="248.23171980081491" />
+      <entry key="H4" value="300.84691877888434" />
+      <entry key="D1" value="662.2547760356856" />
+      <entry key="W1" value="978.2887069923487" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -324,7 +324,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789223850597</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="working on nearest neighbor algorithm implementation">
+      <option name="closed" value="true" />
+      <created>1789226983514</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1789226983514</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,6 +347,7 @@
     <MESSAGE value="created dictionary of addresses from distance CSV file" />
     <MESSAGE value="added hub address extraction to dictionary" />
     <MESSAGE value="created get_distance function to retrieve distances, and loaded truck lists with Package objects per package file constraints (notes)" />
-    <option name="LAST_COMMIT_MESSAGE" value="created get_distance function to retrieve distances, and loaded truck lists with Package objects per package file constraints (notes)" />
+    <MESSAGE value="working on nearest neighbor algorithm implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on nearest neighbor algorithm implementation" />
   </component>
 </project>

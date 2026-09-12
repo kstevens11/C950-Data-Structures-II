@@ -136,32 +136,47 @@ def get_distance(start_index, end_index):
 #print(get_distance(4, 2))
 #print(get_distance(1, 17))
 
-current_location = 0
-next_stop = None
-shortest_distance = float("inf")
-dist_traveled = 0
+def deliver_packages(truck,start_time):
+    current_location = 0
+    dist_traveled = 0
+    start_time = datetime.strptime(start_time, "%I:%M %p")
+    current_time = start_time
 
-#specify that while there are still packages left to be delivered
-while any(package.status != "delivered" for package in truck_1_packages):
+    #repeat loop while there are still packages left to be delivered on the truck
+    while any(package.status != "delivered" for package in truck):
 
-#find the package on the truck with the closest destination
-    for package in truck_1_packages:
-        if package.status != "delivered":
-            package_index = distance_dict[package.address]
-            distance = get_distance(current_location, package_index)
+        #initialize tracker variables
+        next_stop = None
+        shortest_distance = float("inf")
 
-            if distance < shortest_distance:
-                shortest_distance = distance
-                next_stop = package
+        #find the next undelivered package on the truck with the closest destination
+        for package in truck:
+            if package.status != "delivered":
+                package_index = distance_dict[package.address]
+                distance = get_distance(current_location, package_index)
+
+                if distance < shortest_distance:
+                    shortest_distance = distance
+                    next_stop = package
 
         #add mileage traveled to total mileage
         dist_traveled += shortest_distance
 
+        #calculate travel time and add to total time traveled
+        travel_minutes = shortest_distance / 18 * 60
+        current_time += timedelta(minutes=travel_minutes)
+
         #"move" the truck to next location
         if next_stop is not None:
             current_location = distance_dict[next_stop.address]
+            next_stop.status = "delivered" #mark package delivered
+            next_stop.deliver_time = current_time
 
-        next_stop.status = "delivered" #mark package delivered
+            #test delivery status update
+            print(f"Delivered package {next_stop.package_id} at {current_time:%I:%M %p}")
 
+    print(f"Total Truck mileage: {dist_traveled:.2f} miles")
+    print(f"Current Time: {current_time:%I:%M %p}")
 
+deliver_packages(truck_1,"8:00 AM")
 
