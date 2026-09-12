@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf1c41c5-b2a3-49eb-a6dd-32ac9a722480" name="Changes" comment="created dictionary of addresses from distance CSV file">
+    <list default="true" id="cf1c41c5-b2a3-49eb-a6dd-32ac9a722480" name="Changes" comment="added hub address extraction to dictionary">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -37,61 +37,61 @@
 }]]></component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000061684823363" />
-      <entry key="S5" value="1.0175259789874815" />
-      <entry key="S10" value="1.291242817657774" />
-      <entry key="S30" value="3.2387426267487647" />
-      <entry key="S60" value="5.106928135280421" />
-      <entry key="M2" value="8.541265337785525" />
-      <entry key="M5" value="23.574904479338887" />
-      <entry key="M10" value="48.91289025341216" />
-      <entry key="M15" value="71.85238380742653" />
-      <entry key="M30" value="127.94040419702183" />
-      <entry key="H1" value="210.1175133825382" />
-      <entry key="H2" value="305.7259350106548" />
-      <entry key="H4" value="391.74478155769424" />
-      <entry key="D1" value="575.0222298781829" />
-      <entry key="W1" value="651.3091280749179" />
+      <entry key="MS100" value="1.00001669759676" />
+      <entry key="MS500" value="1.1109170377071877" />
+      <entry key="S2" value="1.7638523112568611" />
+      <entry key="S5" value="3.1099271804970954" />
+      <entry key="S10" value="4.934785918469737" />
+      <entry key="S30" value="9.590297214991901" />
+      <entry key="S60" value="14.686072037320296" />
+      <entry key="M2" value="22.146142861315553" />
+      <entry key="M5" value="37.05447505657857" />
+      <entry key="M10" value="49.86978271122703" />
+      <entry key="M15" value="57.45225459819865" />
+      <entry key="M30" value="69.85593697081117" />
+      <entry key="H1" value="79.70580900099965" />
+      <entry key="H2" value="86.42411461330508" />
+      <entry key="H4" value="101.73962243942023" />
+      <entry key="D1" value="424.3854510217869" />
+      <entry key="W1" value="714.3644540544259" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="2.583274386969047E-178" />
-      <entry key="S5" value="9.222915192483055E-72" />
-      <entry key="S10" value="3.0369253023844376E-36" />
-      <entry key="S30" value="1.4506848339522268E-12" />
-      <entry key="S60" value="1.253807354889512E-6" />
-      <entry key="M2" value="0.0013218706206882783" />
-      <entry key="M5" value="0.10406232990836435" />
-      <entry key="M10" value="0.5492148644271738" />
-      <entry key="M15" value="1.0890945907193554" />
-      <entry key="M30" value="2.6763859711718427" />
-      <entry key="H1" value="5.344806385877281" />
-      <entry key="H2" value="8.683668547774063" />
-      <entry key="H4" value="11.704811162513362" />
-      <entry key="D1" value="16.86955688314679" />
-      <entry key="W1" value="18.64728820452244" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="5.1796273064985315E-189" />
+      <entry key="M5" value="7.153809481257447E-76" />
+      <entry key="M10" value="4.5536976875808643E-38" />
+      <entry key="M15" value="2.0708415769906477E-25" />
+      <entry key="M30" value="1.1670497830118245E-12" />
+      <entry key="H1" value="3.529411499323054E-6" />
+      <entry key="H2" value="0.007056484592470986" />
+      <entry key="H4" value="0.33366218629937694" />
+      <entry key="D1" value="9.323824814611774" />
+      <entry key="W1" value="17.132810120359824" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.800341815181654E-12" />
-      <entry key="MS500" value="0.005448217446681269" />
-      <entry key="S2" value="0.2716890347166336" />
-      <entry key="S5" value="0.6101216002504118" />
-      <entry key="S10" value="1.0513265670006486" />
-      <entry key="S30" value="3.1265754601985924" />
-      <entry key="S60" value="5.037486831902943" />
-      <entry key="M2" value="8.500832755589691" />
-      <entry key="M5" value="23.65400518334367" />
-      <entry key="M10" value="49.4388478733736" />
-      <entry key="M15" value="72.91799479734648" />
-      <entry key="M30" value="130.59427037647797" />
-      <entry key="H1" value="215.4430219316581" />
-      <entry key="H2" value="314.39537678020656" />
-      <entry key="H4" value="403.440423309461" />
-      <entry key="D1" value="591.8894601163734" />
-      <entry key="W1" value="669.9560335302785" />
+      <entry key="MS100" value="0.02271837977605527" />
+      <entry key="MS500" value="0.5050045012958293" />
+      <entry key="S2" value="1.4262390864640953" />
+      <entry key="S5" value="2.8945295658783516" />
+      <entry key="S10" value="4.7754333593405285" />
+      <entry key="S30" value="9.475103240236203" />
+      <entry key="S60" value="14.593327062764985" />
+      <entry key="M2" value="22.080701741598954" />
+      <entry key="M5" value="37.017018969270126" />
+      <entry key="M10" value="49.84615806859646" />
+      <entry key="M15" value="57.43437857737464" />
+      <entry key="M30" value="69.8451087257344" />
+      <entry key="H1" value="79.69960229802426" />
+      <entry key="H2" value="86.42778658995007" />
+      <entry key="H4" value="102.07125826985067" />
+      <entry key="D1" value="433.70768323509924" />
+      <entry key="W1" value="731.4968683437953" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -308,7 +308,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789149275189</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added hub address extraction to dictionary">
+      <option name="closed" value="true" />
+      <created>1789150064948</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1789150064948</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,6 +329,7 @@
     <MESSAGE value="Corrected validation issues with parsing, and tested Package printing / creation" />
     <MESSAGE value="created list of lists containing the distance data from the WGUPS Distance Table CSV file" />
     <MESSAGE value="created dictionary of addresses from distance CSV file" />
-    <option name="LAST_COMMIT_MESSAGE" value="created dictionary of addresses from distance CSV file" />
+    <MESSAGE value="added hub address extraction to dictionary" />
+    <option name="LAST_COMMIT_MESSAGE" value="added hub address extraction to dictionary" />
   </component>
 </project>

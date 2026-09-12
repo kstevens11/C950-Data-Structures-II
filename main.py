@@ -90,5 +90,48 @@ with open("WGUPS Distance Table.csv",
         previous_line = distance_input
 
 #test dictionary loading
-print(distance_dict)
+#(distance_dict)
+
+#test distance mapping
+#print(distance_data[17][4])
+
+#test dictionary lookup
+#print(distance_dict["195 W Oakland Ave"])
+
+#manually create empty truck lists
+truck_1 = []
+truck_2 = []
+truck_3 = []
+
+#assign package ids to trucks
+truck_1_packages = [7, 13, 14, 15, 16, 19, 20, 21, 27, 28, 34, 39, 40]
+truck_2_packages = [1, 3, 6, 10, 11, 12, 18, 25, 26, 29, 30, 31, 36, 37, 38]
+truck_3_packages = [2, 4, 5, 8, 9, 17, 22, 23, 24, 32, 33, 35]
+
+#load truck lists with assignments (Package objects)
+for package_id in truck_1_packages:
+    truck_1.append(package_table.lookup(package_id))
+
+for package_id in truck_2_packages:
+    truck_2.append(package_table.lookup(package_id))
+
+for package_id in truck_3_packages:
+    truck_3.append(package_table.lookup(package_id))
+
+#test package loading
+#print(truck_1)
+#print(truck_2)
+#print(truck_3)
+
+#distance retrieval code from distance_data; ensures larger index is retrieved first for matrix
+def get_distance(start_index, end_index):
+    if start_index > end_index:
+        return distance_data[start_index][end_index]
+    else:
+        return distance_data[end_index][start_index]
+
+#test distance retrieval
+#print(get_distance(0, 1))
+#print(get_distance(4, 2))
+#print(get_distance(1, 17))
 
