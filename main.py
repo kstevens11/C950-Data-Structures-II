@@ -3,6 +3,7 @@
 #import the package and hash_table files for use
 from package import Package
 from hash_table import HashTable
+from datetime import datetime, timedelta
 
 #create empty package hash table
 package_table = HashTable()
@@ -134,4 +135,33 @@ def get_distance(start_index, end_index):
 #print(get_distance(0, 1))
 #print(get_distance(4, 2))
 #print(get_distance(1, 17))
+
+current_location = 0
+next_stop = None
+shortest_distance = float("inf")
+dist_traveled = 0
+
+#specify that while there are still packages left to be delivered
+while any(package.status != "delivered" for package in truck_1_packages):
+
+#find the package on the truck with the closest destination
+    for package in truck_1_packages:
+        if package.status != "delivered":
+            package_index = distance_dict[package.address]
+            distance = get_distance(current_location, package_index)
+
+            if distance < shortest_distance:
+                shortest_distance = distance
+                next_stop = package
+
+        #add mileage traveled to total mileage
+        dist_traveled += shortest_distance
+
+        #"move" the truck to next location
+        if next_stop is not None:
+            current_location = distance_dict[next_stop.address]
+
+        next_stop.status = "delivered" #mark package delivered
+
+
 
