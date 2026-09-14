@@ -8,6 +8,9 @@ from datetime import datetime, timedelta
 #create empty package hash table
 package_table = HashTable()
 
+#define start time as earliest time of delivery possible
+start_time = datetime.strptime("08:00 AM", "%I:%M %p")
+
 #open the CSV file "WGUPS Package File.csv"
 with open("WGUPS Package File.csv",
           encoding="utf-8-sig") as package_file:
@@ -20,6 +23,15 @@ with open("WGUPS Package File.csv",
         except ValueError:
             continue
 
+        #assign available time
+        if "Delayed" in package_data[7]:
+           available_time = datetime.strptime(
+               package_data[7].split("until ")[1],
+               "%I:%M %p"
+           )
+        else:
+            available_time = start_time
+
         #create Package object with delimited package data and starter values for load time, delivery time, and status
         package = Package(
             int(package_data[0]),
@@ -29,12 +41,18 @@ with open("WGUPS Package File.csv",
             package_data[4],
             package_data[5],
             package_data[6],
+            package_data[7],
             None,
             None,
+            available_time,
             "at the hub")
 
         #save the package data to the hash table
         package_table.put(package)
+
+    #test available_time assignment for delayed and non-delayed package
+    #print(package_table.lookup(6))
+    #print(package_table.lookup(7))
 
 #to test Package object loading / creation
 #print(package_table)
@@ -99,30 +117,10 @@ with open("WGUPS Distance Table.csv",
 #test dictionary lookup
 #print(distance_dict["195 W Oakland Ave"])
 
-#manually create empty truck lists
-truck_1 = []
-truck_2 = []
-truck_3 = []
-
 #assign package ids to trucks
-truck_1_packages = [7, 13, 14, 15, 16, 19, 20, 21, 27, 28, 34, 39, 40]
-truck_2_packages = [1, 3, 6, 10, 11, 12, 18, 25, 26, 29, 30, 31, 36, 37, 38]
-truck_3_packages = [2, 4, 5, 8, 9, 17, 22, 23, 24, 32, 33, 35]
-
-#load truck lists with assignments (Package objects)
-for package_id in truck_1_packages:
-    truck_1.append(package_table.lookup(package_id))
-
-for package_id in truck_2_packages:
-    truck_2.append(package_table.lookup(package_id))
-
-for package_id in truck_3_packages:
-    truck_3.append(package_table.lookup(package_id))
-
-#test package loading
-#print(truck_1)
-#print(truck_2)
-#print(truck_3)
+truck_1 = [7, 13, 14, 15, 16, 19, 20, 21, 27, 28, 34, 39, 40]
+truck_2 = [1, 3, 6, 10, 11, 12, 18, 25, 26, 29, 30, 31, 36, 37, 38]
+truck_3 = [2, 4, 5, 8, 9, 17, 22, 23, 24, 32, 33, 35]
 
 #distance retrieval code from distance_data; ensures larger index is retrieved first for matrix
 def get_distance(start_index, end_index):
@@ -143,21 +141,21 @@ def deliver_packages(truck,start_time):
     current_time = start_time
 
     #repeat loop while there are still packages left to be delivered on the truck
-    while any(package.status != "delivered" for package in truck):
+    while truck:
 
         #initialize tracker variables
         next_stop = None
         shortest_distance = float("inf")
 
         #find the next undelivered package on the truck with the closest destination
-        for package in truck:
-            if package.status != "delivered":
-                package_index = distance_dict[package.address]
-                distance = get_distance(current_location, package_index)
+        for package_id in truck:
+            package = package_table.lookup(package_id)
+            package_index = distance_dict[package.address]
+            distance = get_distance(current_location, package_index)
 
-                if distance < shortest_distance:
-                    shortest_distance = distance
-                    next_stop = package
+            if distance < shortest_distance:
+                shortest_distance = distance
+                next_stop = package
 
         #add mileage traveled to total mileage
         dist_traveled += shortest_distance
@@ -169,14 +167,23 @@ def deliver_packages(truck,start_time):
         #"move" the truck to next location
         if next_stop is not None:
             current_location = distance_dict[next_stop.address]
-            next_stop.status = "delivered" #mark package delivered
-            next_stop.deliver_time = current_time
+            truck.pop(truck.index(next_stop.package_id))  #remove package from truck to "deliver"
+            next_stop.status = "delivered" #update package's status to delivered
+            next_stop.delivery_time = current_time #timestamp the delivery
 
             #test delivery status update
-            print(f"Delivered package {next_stop.package_id} at {current_time:%I:%M %p}")
+            #print(f"Delivered package {next_stop.package_id} at {current_time:%I:%M %p}")
 
-    print(f"Total Truck mileage: {dist_traveled:.2f} miles")
-    print(f"Current Time: {current_time:%I:%M %p}")
+    #print(f"Total Truck mileage: {dist_traveled:.2f} miles")
+    #print(f"Current Time: {current_time:%I:%M %p}")
+
+    #calculate distance back to hub, and add to total traveled miles
+    back_to_hub_distance = get_distance(current_location,0)
+    dist_traveled += back_to_hub_distance
+
+    #calculate time back to hub, and update current time
+    time_to_hub = back_to_hub_distance / 18 * 60
+    current_time += timedelta(minutes=time_to_hub)
 
 deliver_packages(truck_1,"8:00 AM")
 

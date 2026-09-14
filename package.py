@@ -1,5 +1,5 @@
 class Package:
-    def __init__(self, package_id, address, city, state, zip_code, deadline, weight, loading_time, delivery_time, status):
+    def __init__(self, package_id, address, city, state, zip_code, deadline, weight, notes, loading_time, delivery_time, available_time, status):
         self.package_id = package_id
         self.address = address
         self.city = city
@@ -7,13 +7,34 @@ class Package:
         self.zip_code = zip_code
         self.deadline = deadline
         self.weight = weight
+        self.notes = notes
         self.loading_time = loading_time
         self.delivery_time = delivery_time
+        self.available_time = available_time
         self.status = status
 
+
     def __str__(self):
-        return f"Package {self.package_id}: {self.address}, {self.city}, {self.state}, {self.zip_code}, Loading Time: {self.loading_time}, Delivery Time: {self.delivery_time}, Delivery Status: {self.status}"
+        return (f"Package {self.package_id}: "
+                f"{self.address}, "
+                f"{self.city}, "
+                f"{self.state}, "
+                f"{self.zip_code}, "
+                f"Notes: {self.notes}, "
+                f"Loading Time: {self.loading_time}, "
+                f"Delivery Time: {self.delivery_time}, "
+                f"Available Time: {self.available_time}, "
+                f"Delivery Status: {self.status}")
 
 
     def __repr__(self):
-        return f"Package({self.package_id}, {self.address}, {self.city}, {self.state}, {self.zip_code}, Load: {self.loading_time}, Delivered: {self.delivery_time}, Status: {self.status})"
+        return (f"Package({self.package_id}, "
+                f"{self.address}, "
+                f"{self.city}, "
+                f"{self.state}, "
+                f"{self.zip_code}, "
+                f"Notes: {self.notes}, "
+                f"Load: {self.loading_time}, "
+                f"Delivered: {self.delivery_time}, "
+                f"Available: {self.available_time}, "
+                f"Status: {self.status})")
