@@ -24,11 +24,17 @@ with open("WGUPS Package File.csv",
             continue
 
         #assign available time
+        #assign delays via notes section of CSV
         if "Delayed" in package_data[7]:
            available_time = datetime.strptime(
                package_data[7].split("until ")[1],
                "%I:%M %p"
            )
+        #code for any packages that need special delays
+        elif package_data[0] == "9":
+            available_time = datetime.strptime(
+                "10:20 AM",
+                "%I:%M %p")
         else:
             available_time = start_time
 
@@ -103,6 +109,10 @@ with open("WGUPS Distance Table.csv",
             #create dictionary for mapping between addresses and distance list & extract address portion of distance info only
             if distance_row % 3 == 0:
                 address_data = distance_input[0].strip('"') #removes trailing double quotation mark from the file
+
+                if address_data == "3575 W Valley Central Sta bus Loop":
+                    address_data = "3575 W Valley Central Station bus Loop"
+
                 distance_dict[address_data] = dict_counter #adds address to dictionary and assigns incrementing dictionary key
                 dict_counter += 1 #increments for key assignment
 
@@ -118,9 +128,9 @@ with open("WGUPS Distance Table.csv",
 #print(distance_dict["195 W Oakland Ave"])
 
 #assign package ids to trucks
-truck_1 = [7, 13, 14, 15, 16, 19, 20, 21, 27, 28, 34, 39, 40]
+truck_1 = [7, 13, 14, 15, 16, 19, 20, 21, 27, 34, 39, 40]
 truck_2 = [1, 3, 6, 10, 11, 12, 18, 25, 26, 29, 30, 31, 36, 37, 38]
-truck_3 = [2, 4, 5, 8, 9, 17, 22, 23, 24, 32, 33, 35]
+truck_3 = [2, 4, 5, 8, 9, 17, 22, 23, 24, 28, 32, 33, 35]
 
 #distance retrieval code from distance_data; ensures larger index is retrieved first for matrix
 def get_distance(start_index, end_index):
@@ -137,7 +147,10 @@ def get_distance(start_index, end_index):
 def deliver_packages(truck,start_time):
     current_location = 0
     dist_traveled = 0
-    start_time = datetime.strptime(start_time, "%I:%M %p")
+
+    if isinstance(start_time, str):
+        start_time = datetime.strptime(start_time, "%I:%M %p")
+
     current_time = start_time
 
     #repeat loop while there are still packages left to be delivered on the truck
@@ -150,12 +163,20 @@ def deliver_packages(truck,start_time):
         #find the next undelivered package on the truck with the closest destination
         for package_id in truck:
             package = package_table.lookup(package_id)
-            package_index = distance_dict[package.address]
-            distance = get_distance(current_location, package_index)
 
-            if distance < shortest_distance:
-                shortest_distance = distance
-                next_stop = package
+            if package.package_id == 9 and current_time >= package.available_time:
+                package.address = "410 S State St"
+
+            if package.address not in distance_dict:
+                print(f"Address not found: {package.address}")
+            else:
+                package_index = distance_dict[package.address]
+                distance = get_distance(current_location, package_index)
+
+            if current_time >= package.available_time:
+                if distance < shortest_distance:
+                    shortest_distance = distance
+                    next_stop = package
 
         #add mileage traveled to total mileage
         dist_traveled += shortest_distance
@@ -172,18 +193,26 @@ def deliver_packages(truck,start_time):
             next_stop.delivery_time = current_time #timestamp the delivery
 
             #test delivery status update
-            #print(f"Delivered package {next_stop.package_id} at {current_time:%I:%M %p}")
+            print(f"Delivered package {next_stop.package_id} at {current_time:%I:%M %p}")
 
-    #print(f"Total Truck mileage: {dist_traveled:.2f} miles")
-    #print(f"Current Time: {current_time:%I:%M %p}")
+    print(f"Total Delivery mileage: {dist_traveled:.2f} miles")
+    print(f"Time at Final Delivery: {current_time:%I:%M %p}")
 
     #calculate distance back to hub, and add to total traveled miles
     back_to_hub_distance = get_distance(current_location,0)
     dist_traveled += back_to_hub_distance
+    print(f"Total mileage once back at hub: {dist_traveled:.2f} miles")
 
     #calculate time back to hub, and update current time
     time_to_hub = back_to_hub_distance / 18 * 60
     current_time += timedelta(minutes=time_to_hub)
+    print(f"Time Back at Hub: {current_time:%I:%M %p}")
 
-deliver_packages(truck_1,"8:00 AM")
+    return current_time, dist_traveled
+
+truck_1_end_time, truck_1_mileage = deliver_packages(truck_1,"8:00 AM")
+truck_2_end_time, truck_2_mileage = deliver_packages(truck_2, "9:05 AM")
+truck_3_end_time, truck_3_mileage = deliver_packages(truck_3, truck_1_end_time)
+
+
 
