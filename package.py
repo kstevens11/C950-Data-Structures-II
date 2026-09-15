@@ -1,5 +1,5 @@
 class Package:
-    def __init__(self, package_id, address, city, state, zip_code, deadline, weight, notes, loading_time, delivery_time, available_time, status, corrected_address):
+    def __init__(self, package_id, address, city, state, zip_code, deadline, weight, notes, loading_time, delivery_time, available_time, status, corrected_address, corrected_city, corrected_state, corrected_zip):
         self.package_id = package_id
         self.address = address
         self.city = city
@@ -13,6 +13,9 @@ class Package:
         self.available_time = available_time
         self.status = status
         self.corrected_address = corrected_address
+        self.corrected_city = corrected_city
+        self.corrected_state = corrected_state
+        self.corrected_zip = corrected_zip
 
     def __str__(self):
         return (f"Package {self.package_id}: "

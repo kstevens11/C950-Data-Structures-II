@@ -38,6 +38,18 @@ with open("WGUPS Package File.csv",
         else:
             available_time = start_time
 
+        corrected_address = None
+        corrected_city = None
+        corrected_state = None
+        corrected_zip = None
+
+        #load correct address information for any uniquely incorrect addresses
+        if package_data[0] == "9":
+            corrected_address = "410 S State St"
+            corrected_city = "Salt Lake City"
+            corrected_state = "UT"
+            corrected_zip = "84111"
+
         #create Package object with delimited package data and starter values for load time, delivery time, and status
         package = Package(
             int(package_data[0]),
@@ -52,7 +64,10 @@ with open("WGUPS Package File.csv",
             None,
             available_time,
             "at the hub",
-            None)
+            corrected_address,
+            corrected_city,
+            corrected_state,
+            corrected_zip)
 
         #save the package data to the hash table
         package_table.put(package)
@@ -133,6 +148,11 @@ truck_1 = [7, 13, 14, 15, 16, 19, 20, 21, 27, 34, 39, 40]
 truck_2 = [1, 3, 6, 10, 11, 12, 18, 25, 26, 29, 30, 31, 36, 37, 38]
 truck_3 = [2, 4, 5, 8, 9, 17, 22, 23, 24, 28, 32, 33, 35]
 
+#copy to preserve original list for printing Truck numbers in interface
+truck_1_packages = truck_1.copy()
+truck_2_packages = truck_2.copy()
+truck_3_packages = truck_3.copy()
+
 #distance retrieval code from distance_data; ensures larger index is retrieved first for matrix
 def get_distance(start_index, end_index):
     if start_index > end_index:
@@ -171,14 +191,15 @@ def deliver_packages(truck,start_time):
 
             #package 9 address correction
             if package.package_id == 9 and current_time >= package.available_time:
-                package.address = "410 S State St"
-                package.corrected_address = "410 S. State St., Salt Lake City, UT 84111"
+                delivery_address = package.corrected_address
+            else:
+                delivery_address = package.address
 
             #find package address
             if package.address not in distance_dict:
                 print(f"Address not found: {package.address}")
             else:
-                package_index = distance_dict[package.address]
+                package_index = distance_dict[delivery_address]
                 distance = get_distance(current_location, package_index)
 
             #check availability time for delivery
@@ -226,36 +247,55 @@ truck_3_end_time, truck_3_mileage = deliver_packages(truck_3, truck_1_end_time)
 user_time = input("Enter a time to see package statuses (format as 9:00 AM): ")
 user_time = datetime.strptime(user_time, "%I:%M %p")
 
+def get_truck_number(package_id):
+    if package_id in truck_1_packages:
+        truck_number = "1"
+    elif package_id in truck_2_packages:
+        truck_number = "2"
+    elif package_id in truck_3_packages:
+        truck_number = "3"
+    return truck_number
+
 for bucket in package_table.table:
     for package in bucket:
 
+        #print Package ID # & Truck assigned
         print(f"Package {package.package_id}: "
-              f"Truck | ")
+              f"Truck {get_truck_number(package.package_id)} | ")
 
+        #print address
         if package.package_id == 9 and user_time >= package.available_time:
             display_address = package.corrected_address
+            display_city = package.corrected_city
+            display_zip = package.corrected_zip
         else:
             display_address = package.address
+            zip_code = package.zip_code
+            display_city = package.city
+            display_zip = package.zip_code
 
-        print(f"Delivery Address: {display_address}, {package.city}, {package.zip_code} | ")
+        print(f"Delivery Address: {display_address}, {display_city}, {display_zip} | ")
 
+        #print deadline, weight, notes from package file
         print(f"Delivery Deadline: {package.deadline} | "
               f"Package Weight: {package.weight} lbs. | "
               f"Package Notes: {package.notes} | ")
 
+        #print loading time or status if not loaded
         if package.loading_time <= user_time:
-              print(f"Loaded: {package.loading_time} | ")
+              print(f"Loaded: {package.loading_time:%I:%M %p} | ")
         else:
             print("Not loaded")
 
+        #print delivery time or status if not delivered
         if package.delivery_time <= user_time:
-            print(f"Status: Delivered at {package.delivery_time} | ")
+            print(f"Status: Delivered at {package.delivery_time:%I:%M %p}\n")
         elif package.available_time > user_time:
-            print(f"Status: Delayed")
+            print(f"Status: Delayed\n")
         elif user_time <= package.loading_time:
-            print(f"Status: At the hub")
+            print(f"Status: At the hub\n")
         else:
-            print(f"Status: En Route")
+            print(f"Status: En Route\n")
 
 
         """ if package.delivery_time is not None and package.delivery_time <= user_time:
