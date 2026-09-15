@@ -38,10 +38,16 @@ with open("WGUPS Package File.csv",
         else:
             available_time = start_time
 
+        #initialize corrector variables
         corrected_address = None
         corrected_city = None
         corrected_state = None
         corrected_zip = None
+
+        deadline = package_data[5]
+
+        if deadline != "EOD":
+            deadline = datetime.strptime(deadline, "%I:%M %p")
 
         #load correct address information for any uniquely incorrect addresses
         if package_data[0] == "9":
@@ -57,7 +63,7 @@ with open("WGUPS Package File.csv",
             package_data[2],
             package_data[3],
             package_data[4],
-            package_data[5],
+            deadline,
             package_data[6],
             package_data[7],
             None,
@@ -168,6 +174,7 @@ def get_distance(start_index, end_index):
 def deliver_packages(truck,start_time):
     current_location = 0
     dist_traveled = 0
+    total_mileage = 0
 
     if isinstance(start_time, str):
         start_time = datetime.strptime(start_time, "%I:%M %p")
@@ -184,7 +191,9 @@ def deliver_packages(truck,start_time):
 
         #initialize tracker variables
         next_stop = None
+        next_stop_address = None
         shortest_distance = float("inf")
+        shortest_time_until_deadline = float("inf")
 
         for package_id in truck:
             package = package_table.lookup(package_id)
@@ -196,17 +205,34 @@ def deliver_packages(truck,start_time):
                 delivery_address = package.address
 
             #find package address
-            if package.address not in distance_dict:
+            if delivery_address not in distance_dict:
                 print(f"Address not found: {package.address}")
             else:
                 package_index = distance_dict[delivery_address]
-                distance = get_distance(current_location, package_index)
 
-            #check availability time for delivery
+            #check availability of package for delivery
             if current_time >= package.available_time:
-                if distance < shortest_distance:
-                    shortest_distance = distance
-                    next_stop = package
+                distance = get_distance(current_location, package_index)
+                travel_minutes = distance / 18 * 60
+
+                #to prioritize packages with time deadlines over EOD deadline packages
+                if isinstance(package.deadline, datetime): #Time deadlines
+                    time_until_deadline = (package.deadline - current_time).total_seconds() / 60
+                else: #"EOD" deadlines
+                    time_until_deadline = float("inf")
+
+                if travel_minutes <= time_until_deadline:
+                    if time_until_deadline < shortest_time_until_deadline:
+                        shortest_time_until_deadline = time_until_deadline
+                        shortest_distance = distance
+                        next_stop = package
+                        next_stop_address = delivery_address
+
+                    elif time_until_deadline == shortest_time_until_deadline:
+                        if distance < shortest_distance:
+                            shortest_distance = distance
+                            next_stop = package
+                            next_stop_address = delivery_address
 
         #add mileage traveled to total mileage
         dist_traveled += shortest_distance
@@ -217,7 +243,7 @@ def deliver_packages(truck,start_time):
 
         #"move" the truck to next location
         if next_stop is not None:
-            current_location = distance_dict[next_stop.address]
+            current_location = distance_dict[next_stop_address]
             truck.pop(truck.index(next_stop.package_id))  #remove package from truck to "deliver"
             next_stop.status = "delivered" #update package's status to delivered
             next_stop.delivery_time = current_time #timestamp the delivery
@@ -236,7 +262,8 @@ def deliver_packages(truck,start_time):
     #calculate time back to hub, and update current time
     time_to_hub = back_to_hub_distance / 18 * 60
     current_time += timedelta(minutes=time_to_hub)
-    #print(f"Time Back at Hub: {current_time:%I:%M %p}")
+    total_mileage += dist_traveled
+
 
     return current_time, dist_traveled
 
@@ -306,5 +333,7 @@ for bucket in package_table.table:
             print(f"Package {package.package_id}: At the hub")
         else:
             print(f"Package {package.package_id}: En Route") """
+
+
 
 
