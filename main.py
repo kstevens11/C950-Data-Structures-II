@@ -171,10 +171,9 @@ def get_distance(start_index, end_index):
 #print(get_distance(4, 2))
 #print(get_distance(1, 17))
 
-def deliver_packages(truck,start_time):
+def deliver_packages(truck,start_time, return_to_hub=True):
     current_location = 0
     dist_traveled = 0
-    total_mileage = 0
 
     if isinstance(start_time, str):
         start_time = datetime.strptime(start_time, "%I:%M %p")
@@ -254,25 +253,29 @@ def deliver_packages(truck,start_time):
     #print(f"Total Delivery mileage: {dist_traveled:.2f} miles")
     #print(f"Time at Final Delivery: {current_time:%I:%M %p}")
 
-    #calculate distance back to hub, and add to total traveled miles
-    back_to_hub_distance = get_distance(current_location,0)
-    dist_traveled += back_to_hub_distance
-    #print(f"Total mileage once back at hub: {dist_traveled:.2f} miles")
+    #calculate distance back to hub if truck is returning to hub, and add to total traveled miles
+    if return_to_hub:
+        back_to_hub_distance = get_distance(current_location,0)
+        dist_traveled += back_to_hub_distance
+        #print(f"Total mileage once back at hub: {dist_traveled:.2f} miles")
 
-    #calculate time back to hub, and update current time
-    time_to_hub = back_to_hub_distance / 18 * 60
-    current_time += timedelta(minutes=time_to_hub)
-    total_mileage += dist_traveled
-
+        #calculate time back to hub, and update current time
+        time_to_hub = back_to_hub_distance / 18 * 60
+        current_time += timedelta(minutes=time_to_hub)
 
     return current_time, dist_traveled
 
-truck_1_end_time, truck_1_mileage = deliver_packages(truck_1,"8:00 AM")
-truck_2_end_time, truck_2_mileage = deliver_packages(truck_2, "9:05 AM")
-truck_3_end_time, truck_3_mileage = deliver_packages(truck_3, truck_1_end_time)
+truck_1_end_time, truck_1_mileage= deliver_packages(truck_1,"8:00 AM", True)
+truck_2_end_time, truck_2_mileage, = deliver_packages(truck_2, "9:05 AM", True)
+truck_3_end_time, truck_3_mileage, = deliver_packages(truck_3, truck_1_end_time, False)
 
-user_time = input("Enter a time to see package statuses (format as 9:00 AM): ")
-user_time = datetime.strptime(user_time, "%I:%M %p")
+while True:
+    time_input = input("Enter a time to see package statuses (format as 9:00 AM): ")
+    try:
+        user_time = datetime.strptime(time_input, "%I:%M %p")
+        break
+    except ValueError:
+       print("Invalid time entered. Please format as H:MM AM/PM: ")
 
 def get_truck_number(package_id):
     if package_id in truck_1_packages:
@@ -288,7 +291,7 @@ for bucket in package_table.table:
 
         #print Package ID # & Truck assigned
         print(f"Package {package.package_id}: "
-              f"Truck {get_truck_number(package.package_id)} | ")
+              f"Truck {get_truck_number(package.package_id)} | ", end="")
 
         #print address
         if package.package_id == 9 and user_time >= package.available_time:
@@ -297,20 +300,18 @@ for bucket in package_table.table:
             display_zip = package.corrected_zip
         else:
             display_address = package.address
-            zip_code = package.zip_code
             display_city = package.city
             display_zip = package.zip_code
 
-        print(f"Delivery Address: {display_address}, {display_city}, {display_zip} | ")
+        print(f"Delivery Address: {display_address}, {display_city}, {display_zip} | ", end="")
 
         #print deadline, weight, notes from package file
         print(f"Delivery Deadline: {package.deadline} | "
-              f"Package Weight: {package.weight} lbs. | "
-              f"Package Notes: {package.notes} | ")
+              f"Weight: {package.weight} lbs. | ", end="")
 
         #print loading time or status if not loaded
         if package.loading_time <= user_time:
-              print(f"Loaded: {package.loading_time:%I:%M %p} | ")
+              print(f"Loaded: {package.loading_time:%I:%M %p} | ", end="")
         else:
             print("Not loaded")
 
@@ -324,16 +325,7 @@ for bucket in package_table.table:
         else:
             print(f"Status: En Route\n")
 
-
-        """ if package.delivery_time is not None and package.delivery_time <= user_time:
-            print(f"Package {package.package_id}: Delivered")
-        elif package.available_time is not None and package.available_time > user_time:
-            print(f"Package {package.package_id}: Delayed")
-        elif user_time <= package.loading_time:
-            print(f"Package {package.package_id}: At the hub")
-        else:
-            print(f"Package {package.package_id}: En Route") """
+total_mileage = truck_1_mileage + truck_2_mileage + truck_3_mileage
 
 
-
-
+print(f"Total mileage once all packages are delivered: {total_mileage:.2f} miles")
