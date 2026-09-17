@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf1c41c5-b2a3-49eb-a6dd-32ac9a722480" name="Changes" comment="update deadline logic and prioritization for package selection">
+    <list default="true" id="cf1c41c5-b2a3-49eb-a6dd-32ac9a722480" name="Changes" comment="Project completed / finalized">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -23,75 +23,75 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "kstevens11"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kstevens11&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/kstevens11/C950-Data-Structures-II.git",
-    "accountId": "ae885b75-da41-4ab8-a27b-11a966cc041a"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/kstevens11/C950-Data-Structures-II.git&quot;,
+    &quot;accountId&quot;: &quot;ae885b75-da41-4ab8-a27b-11a966cc041a&quot;
   }
-}]]></component>
+}</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="2.098055428865855E-90" />
-      <entry key="S5" value="4.348720973236285E-36" />
-      <entry key="S10" value="5.8245185694588556E-18" />
-      <entry key="S30" value="8.187564769163097E-6" />
-      <entry key="S60" value="0.010967432189170224" />
-      <entry key="M2" value="0.44628049337375" />
-      <entry key="M5" value="4.3162021019330705" />
-      <entry key="M10" value="9.271720153846992" />
-      <entry key="M15" value="11.974259181365195" />
-      <entry key="M30" value="15.471717483107188" />
-      <entry key="H1" value="17.589754744799365" />
-      <entry key="H2" value="18.82688720698905" />
-      <entry key="H4" value="23.337939356017657" />
-      <entry key="D1" value="343.9015999505037" />
-      <entry key="W1" value="1401.8655035963957" />
+      <entry key="MS100" value="1.010173385129764" />
+      <entry key="MS500" value="1.5421777621618333" />
+      <entry key="S2" value="3.3395769376152713" />
+      <entry key="S5" value="5.923553848954997" />
+      <entry key="S10" value="9.323666732113491" />
+      <entry key="S30" value="20.900326389261767" />
+      <entry key="S60" value="34.07944137522519" />
+      <entry key="M2" value="52.08342334449153" />
+      <entry key="M5" value="79.92328047387295" />
+      <entry key="M10" value="99.02805948862006" />
+      <entry key="M15" value="108.7475686347956" />
+      <entry key="M30" value="122.25645475939325" />
+      <entry key="H1" value="131.3920751087357" />
+      <entry key="H2" value="136.89246548959437" />
+      <entry key="H4" value="143.53025889575875" />
+      <entry key="D1" value="462.89513131524194" />
+      <entry key="W1" value="1522.618365743272" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.000000050520121" />
-      <entry key="S60" value="1.0002247668145599" />
-      <entry key="M2" value="1.0149922251370418" />
-      <entry key="M5" value="1.1863573122333582" />
-      <entry key="M10" value="1.431691223252637" />
-      <entry key="M15" value="1.5711920392960725" />
-      <entry key="M30" value="1.7557724785255482" />
-      <entry key="H1" value="1.8693538706111572" />
-      <entry key="H2" value="1.938512995864704" />
-      <entry key="H4" value="2.3168880386113586" />
-      <entry key="D1" value="17.152933386195727" />
-      <entry key="W1" value="52.13477651785575" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.81950212558578E-208" />
+      <entry key="S5" value="8.016430411200729E-84" />
+      <entry key="S10" value="2.8313301487464754E-42" />
+      <entry key="S30" value="1.4146973057387928E-14" />
+      <entry key="S60" value="1.1896777965989857E-7" />
+      <entry key="M2" value="3.5004879878245126E-4" />
+      <entry key="M5" value="0.04889696030078707" />
+      <entry key="M10" value="0.2906581719665626" />
+      <entry key="M15" value="0.5427311144966113" />
+      <entry key="M30" value="1.031919839775676" />
+      <entry key="H1" value="1.433112830104804" />
+      <entry key="H2" value="1.6973177312094214" />
+      <entry key="H4" value="2.167964982376884" />
+      <entry key="D1" value="16.964052335802076" />
+      <entry key="W1" value="52.052374432171746" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.7406672910589947E-5" />
-      <entry key="MS500" value="0.11172314529459834" />
-      <entry key="S2" value="0.5781436878936614" />
-      <entry key="S5" value="0.803182644281775" />
-      <entry key="S10" value="0.8962045772488416" />
-      <entry key="S30" value="0.9641384992507607" />
-      <entry key="S60" value="0.9930800193378325" />
-      <entry key="M2" value="1.451815198325519" />
-      <entry key="M5" value="5.497265064512162" />
-      <entry key="M10" value="10.699734795360843" />
-      <entry key="M15" value="13.542616719813" />
-      <entry key="M30" value="17.225821363069155" />
-      <entry key="H1" value="19.458197491126516" />
-      <entry key="H2" value="20.76491850746107" />
-      <entry key="H4" value="25.65444137735865" />
-      <entry key="D1" value="361.0528221586015" />
-      <entry key="W1" value="1453.9993608770144" />
+      <entry key="MS100" value="0.9423944984555919" />
+      <entry key="MS500" value="1.5195653215890061" />
+      <entry key="S2" value="3.3250588003662847" />
+      <entry key="S5" value="5.9122731498099625" />
+      <entry key="S10" value="9.31418686568759" />
+      <entry key="S30" value="20.892339737147005" />
+      <entry key="S60" value="34.07278259581769" />
+      <entry key="M2" value="52.078403403520674" />
+      <entry key="M5" value="79.96823208890723" />
+      <entry key="M10" value="99.31554217528998" />
+      <entry key="M15" value="109.28753267066796" />
+      <entry key="M30" value="123.28640144034954" />
+      <entry key="H1" value="132.82396550258966" />
+      <entry key="H2" value="138.58909214072534" />
+      <entry key="H4" value="145.69772612003712" />
+      <entry key="D1" value="479.85746828901773" />
+      <entry key="W1" value="1574.66981909496" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -106,145 +106,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="C950 Task 2 K Stevens" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="C950 Task 2 K Stevens" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <option name="RUN_TOOL" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Docutils task">
-      <module name="C950 Task 2 K Stevens" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <option name="RUN_TOOL" value="" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Sphinx task">
-      <module name="C950 Task 2 K Stevens" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <option name="RUN_TOOL" value="" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Autodetect">
-      <module name="C950 Task 2 K Stevens" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <option name="RUN_TOOL" value="" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <module name="C950 Task 2 K Stevens" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method v="2" />
-    </configuration>
-  </component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -259,6 +143,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1789078722675</updated>
+      <workItem from="1789614772791" duration="630000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project set up, creation of package and hash_table classes">
       <option name="closed" value="true" />
@@ -380,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789511718407</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Project completed / finalized">
+      <option name="closed" value="true" />
+      <created>1789596240517</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1789596240517</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,6 +294,7 @@
     <MESSAGE value="interface creation with print statements upon user inputting a time" />
     <MESSAGE value="continue interface creation with print statements upon user inputting a time" />
     <MESSAGE value="update deadline logic and prioritization for package selection" />
-    <option name="LAST_COMMIT_MESSAGE" value="update deadline logic and prioritization for package selection" />
+    <MESSAGE value="Project completed / finalized" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project completed / finalized" />
   </component>
 </project>
